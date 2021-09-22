@@ -6,6 +6,8 @@ help:
 	@echo "  build            docker compose build --no-cache"
 	@echo "  up               docker compose up -d"
 	@echo "  down             docker compose down"
+	@echo "  flogs            docker -f logs php"
+	@echo "  logs             docker logs php"
 
 build:
 	@docker-compose --env-file .docker.env build --no-cache
@@ -15,3 +17,9 @@ up:
 
 down:
 	@docker compose --env-file .docker.env down
+
+flogs:
+	@docker logs -f php
+
+logs:
+	@docker logs php
