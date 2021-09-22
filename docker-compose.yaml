@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  php:
+    container_name: php
+    build:
+      context: ./
+      target: dev
+    command: serve --host 0.0.0.0
+    volumes:
+      - ./:${TARGET_VOLUME}
+    ports:
+      - ${PHP_HOST_PORT}:${PHP_CONTAINER_PORT}
+
+  mysql:
+    container_name: mysql
+    image: mariadb:10.5
+    ports:
+      - ${DB_HOST_PORT}:${DB_CONTAINER_PORT}
+    volumes:
+      - database:/var/lib/mysql
+    env_file:
+      - .database.env
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - ${AD_HOST_PORT}:${AD_CONTAINER_PORT}
+    env_file:
+      - .database.env
+
+volumes:
+  database:
