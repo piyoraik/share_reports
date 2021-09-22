@@ -18,6 +18,10 @@ up:
 down:
 	@docker compose --env-file .docker.env down
 
+restart:
+	@docker compose --env-file .docker.env down
+	@docker compose --env-file .docker.env up -d
+
 flogs:
 	@docker logs -f php
 

@@ -1,5 +1,6 @@
 FROM php:8.0.0-fpm-buster as laravel_base
 
+RUN curl https://deb.nodesource.com/setup_14.x | bash
 RUN apt update -y
 RUN apt install -y wget libjpeg-dev libfreetype6-dev && \
   apt install -y  libmagick++-dev \
@@ -12,7 +13,8 @@ RUN apt install -y wget libjpeg-dev libfreetype6-dev && \
   libxpm-dev \
   libgmp-dev \
   git \
-  unzip
+  unzip \
+	nodejs
 
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ && \
       docker-php-ext-install -j$(nproc) gd && \

@@ -7,7 +7,7 @@ services:
       target: dev
     command: serve --host 0.0.0.0
     volumes:
-      - ./:${TARGET_VOLUME}
+      - ./:/ph34
     ports:
       - ${PHP_HOST_PORT}:${PHP_CONTAINER_PORT}
 
