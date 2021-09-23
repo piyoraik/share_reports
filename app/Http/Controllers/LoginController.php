@@ -44,7 +44,7 @@ class LoginController extends Controller
 			}
 		}
 		if($isRedirect) {
-				$response = redirect(route('top'));
+				$response = redirect(route('reportIndex'));
 			}
 			else {
 				if(!empty($validationMsgs)) {

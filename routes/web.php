@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TopController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +21,6 @@ Route::post('/login', [LoginController::class, 'login'])->name('postlogin');
 Route::post("/logout", [LoginController::class, "logout"])->name('logout');
 
 // ReportController
+Route::prefix('reports')->group(function(){
+	Route::get('/showList', [ReportController::class, 'index'])->middleware('logincheck')->name('reportIndex');
+});
