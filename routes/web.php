@@ -18,5 +18,6 @@ use App\Http\Controllers\LoginController;
 // LoginController
 Route::get('/', [LoginController::class, 'gologin'])->name('getlogin');
 Route::post('/login', [LoginController::class, 'login'])->name('postlogin');
+Route::post("/logout", [LoginController::class, "logout"])->name('logout');
 
 // ReportController

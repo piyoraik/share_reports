@@ -55,4 +55,13 @@ class LoginController extends Controller
 			}
 			return$response;
 	}
+
+	// POST /logout
+	public function logout(Request $request)
+	{
+			$session = $request->session();
+			$session->flush();
+			$session->regenerate();
+			return redirect(route('getlogin'));
+		}
 }
