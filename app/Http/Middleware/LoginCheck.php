@@ -18,7 +18,7 @@
 		*/
 		public function handle(Request $request, Closure $next) {
 			$session = $request->session();
-			if(!$session->has("loginFlg") || $session->get("loginFlg") == false || !$session->has("id") || !$session->has("name") || !$session->has("auth")) {
+			if(!$session->has("loginFlg") || $session->get("loginFlg") == false || !$session->has("id") || !$session->has("email") || !$session->has("auth")) {
 				throw new NoLoginException();
 			}
 			$response = $next($request);

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,11 @@ use App\Http\Controllers\TopController;
 |
 */
 
+// TopController
 Route::get('/', [TopController::class, 'top'])->name('top');
+
+// LoginController
+Route::get('/login', [LoginController::class, 'gologin'])->name('getlogin');
+Route::post('/login', [LoginController::class, 'login'])->name('postlogin');
+
+// ReportController
