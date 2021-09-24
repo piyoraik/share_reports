@@ -14,6 +14,8 @@ class ReportController extends Controller
 			$templatePath = "reports.index";
 			$assign = [];
 
+			$assign['reportCate'] = ReportCate::all();
+
 			return view($templatePath, $assign);
 		}
 }
