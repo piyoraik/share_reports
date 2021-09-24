@@ -20,8 +20,28 @@ class ReportController extends Controller
 		}
 
 		// POST create
-		public function cerate(Request $request)
+		public function create(Request $request)
 		{
+			$rules = [
+				"rp_date" 			=> ['required'],
+				"rp_time_from" 	=> ['required'],
+				"rp_time_to"		=> ['required'],
+				"rp_content"		=> ['required'],
+				"reportcate_id"	=> ['required'],
+			];
+			$this->validate($request, $rules);
+
+			$report = Report::create([
+				"rp_date" 			=> $request->rp_date,
+				"rp_time_from" 	=> $request->rp_time_from,
+				"rp_time_to"		=> $request->rp_time_to,
+				"rp_content"		=> $request->rp_content,
+				"reportcate_id"	=> $request->reportcate_id,
+				"user_id"				=> $request->session()->get('id'),
+				"rp_created_at" => date("Y-m-d H:i:s"),
+			]);
+
+			return redirect(route('reportShow',['id' => $report->id]));
 		}
 
     // GET INDEX
