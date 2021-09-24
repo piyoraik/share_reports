@@ -63,5 +63,5 @@ class LoginController extends Controller
 			$session->flush();
 			$session->regenerate();
 			return redirect(route('getlogin'));
-		}
+	}
 }

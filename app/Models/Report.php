@@ -25,4 +25,9 @@ class Report extends Model
 		{
 			return $this->belongsTo(User::class);
 		}
+
+		public function reportcate()
+		{
+			return $this->belongsTo(ReportCate::class);
+		}
 }

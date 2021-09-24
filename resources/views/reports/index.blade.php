@@ -12,11 +12,15 @@
 			@foreach($reports as $report)
 			<tr>
 				<td>{{$report->rp_date}}</td>
-				<td>{{Str::limit($report->rp_content, 20, '...')}}</td>
+				<td><a href="{{route('reportShow', ['id' => $report->id])}}">{{Str::limit($report->rp_content, 20, '...')}}</a>
+				</td>
 				<td>{{$report->user->us_name}}</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
+	<div class="row justify-content-center d-flex">
+		{{ $reports->links('pagination::bootstrap-4') }}
+	</div>
 </div>
 @endsection

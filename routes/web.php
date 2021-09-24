@@ -30,8 +30,8 @@ Route::group(['prefix' => 'reports', 'middleware' => 'logincheck'], function(){
 	Route::prefix('showDetail')->group(function(){
 		Route::get('/{id}', [ReportController::class, 'show'])->name('reportShow');
 		Route::get('/{id}/edit', [ReportController::class, 'edit'])->name('reportEdit');
-		Route::patch('/{id}/update', [ReportController::class, 'update'])->name('reportUpdate');
+		Route::post('/{id}/update', [ReportController::class, 'update'])->name('reportUpdate');
 		Route::get('/{id}/confirmDelete', [ReportController::class, 'confirmdelete'])->name('reportConfirmDelete');
-		Route::delete('/{id}/delete', [ReportController::class, 'delete'])->name('reportDelete');
+		Route::post('/{id}/delete', [ReportController::class, 'delete'])->name('reportDelete');
 	});
 });
