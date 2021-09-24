@@ -12,7 +12,9 @@
 
 <body>
 	<div class="container">
-		@yield('content')
+		<div class="mt-5">
+			@yield('content')
+		</div>
 	</div>
 </body>
 
