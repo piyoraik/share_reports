@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReportController;
+use App\Models\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,22 @@ use App\Http\Controllers\ReportController;
 |
 */
 
-// LoginController
+// LoginController：ログイン・ログアウト処理
 Route::get('/', [LoginController::class, 'gologin'])->name('getlogin');
 Route::post('/login', [LoginController::class, 'login'])->name('postlogin');
 Route::post("/logout", [LoginController::class, "logout"])->name('logout');
 
-// ReportController
-Route::prefix('reports')->group(function(){
-	Route::get('/showList', [ReportController::class, 'index'])->middleware('logincheck')->name('reportIndex');
+// ReportController：レポート処理
+Route::group(['prefix' => 'reports', 'middleware' => 'logincheck'], function(){
+	Route::get('/add', [ReportController::class, 'add'])->name('reportAdd');
+	Route::post('/add', [ReportController::class, 'create'])->name('reportCreate');
+	Route::get('/showList', [ReportController::class, 'index'])->name('reportIndex');
+
+	// レポート詳細処理
+	Route::prefix('showDetail')->group(function(){
+		Route::get('/{id}', [ReportController::class, 'show'])->name('reportShow');
+		Route::get('/{id}/edit', [ReportController::class, 'edit'])->name('reportEdit');
+		Route::patch('/{id}/edit', [ReportController::class, 'update'])->name('reportUpdate');
+		Route::delete('/{id}/edit', [ReportController::class, 'delete'])->name('reportDelete');
+	});
 });
