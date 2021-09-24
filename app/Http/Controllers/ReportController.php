@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Report;
 use App\Models\ReportCate;
 
@@ -45,10 +46,14 @@ class ReportController extends Controller
 		}
 
     // GET INDEX
-		public function index()
+		public function index(Request $request)
 		{
 			$templatePath = "reports.index";
 			$assign = [];
+
+			$session_user 		 = User::where("id", $request->session()->get('id'))->first();
+			$assign['reports'] = Report::orderBy("rp_date", "DESC")->get();
+			$assign['user']    = $session_user->us_name;
 
 			return view($templatePath, $assign);
 		}

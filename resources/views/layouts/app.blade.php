@@ -11,6 +11,7 @@
 </head>
 
 <body>
+	<x-header>{{ $user }}</x-header>
 	<div class="container">
 		<div class="mt-5">
 			@yield('content')

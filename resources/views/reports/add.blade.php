@@ -20,7 +20,7 @@
 				<input type="time" value="{{ old('rp_time_to') }}" name="rp_time_to" class="form-control" id="rp_time_to">
 			</div>
 			<div class="mb-3">
-				<label for="rp_content" class="form-label">作業開始時間</label>
+				<label for="rp_content" class="form-label">作業内容</label>
 				<textarea name="rp_content" id="rp_content" class="form-control" cols="30"
 					rows="10">{{old('rp_content')}}</textarea>
 			</div>
